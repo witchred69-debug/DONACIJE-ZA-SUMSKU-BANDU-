@@ -12,120 +12,342 @@
             --aircash: #e74c3c;
             --aircash-hover: #c0392b;
             --dark: #1a202c;
-            --light: #f4f7f6;
             --text: #2d3748;
             --shadow: 0 10px 25px rgba(0,0,0,0.08);
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif; }
-        body { background-color: #f0f4f2; color: var(--text); line-height: 1.7; }
-        header { background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('https://unsplash.com') center/cover; color: white; text-align: center; padding: 80px 20px 100px; }
-        header h1 { font-size: 2.3rem; font-weight: 800; margin-bottom: 12px; }
-        header p { font-size: 1.15rem; max-width: 650px; margin: 0 auto; opacity: 0.95; }
-        .container { max-width: 1100px; margin: -50px auto 40px; padding: 0 15px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 25px; }
-        @media (max-width: 768px) { .container { grid-template-columns: 1fr; margin-top: -30px; } header h1 { font-size: 1.8rem; } }
-        .main-content, .sidebar { background: white; padding: 30px; border-radius: 16px; box-shadow: var(--shadow); }
-        .main-content h2 { color: var(--dark); margin-bottom: 15px; border-bottom: 3px solid var(--primary); display: inline-block; padding-bottom: 4px; margin-top: 25px; font-size: 1.4rem; }
-        .main-content h2:first-child { margin-top: 0; }
-        .main-content p { margin-bottom: 16px; font-size: 1.05rem; }
-        .highlight-box { background-color: #f0fff4; border-left: 4px solid var(--primary); padding: 15px 20px; border-radius: 0 8px 8px 0; margin: 20px 0; font-style: italic; color: #22543d; }
-        .tiers-list { list-style: none; margin-top: 10px; }
-        .tiers-list li { padding: 12px 15px; background: #f8fafc; border-radius: 8px; margin-bottom: 10px; border: 1px solid #e2e8f0; }
-        .tiers-list li strong { color: var(--aircash); font-size: 1.1rem; }
-        .sidebar h3 { color: var(--dark); margin-bottom: 15px; text-align: center; font-size: 1.4rem; }
-        .start-badge { background: #ebf8ff; color: #2b6cb0; text-align: center; padding: 10px; border-radius: 8px; font-weight: bold; margin-bottom: 18px; border: 1px solid #bee3f8; }
-        .pay-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 20px; background: #edf2f7; padding: 5px; border-radius: 10px; }
-        .tab-btn { padding: 10px; border: none; border-radius: 8px; font-weight: bold; font-size: 0.95rem; cursor: pointer; background: transparent; color: #4a5568; }
-        .tab-btn.active { background: white; color: var(--dark); box-shadow: 0 2px 6px rgba(0,0,0,0.08); }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .donate-submit { width: 100%; background-color: var(--aircash); color: white; border: none; padding: 16px; font-size: 1.15rem; font-weight: bold; border-radius: 10px; cursor: pointer; margin-bottom: 20px; text-decoration: none; display: block; text-align: center; box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3); }
-        .qr-section { text-align: center; border-top: 2px dashed #e2e8f0; padding-top: 18px; }
-        .qr-section p { font-size: 0.95rem; margin-bottom: 10px; font-weight: 600; color: var(--dark); }
-        .qr-code { max-width: 185px; width: 100%; height: auto; border: 1px solid #e2e8f0; padding: 10px; border-radius: 12px; background: #fff; }
-        .bank-box { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; padding: 15px; margin-bottom: 15px; }
-        .bank-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #edf2f7; font-size: 0.92rem; }
-        .bank-label { color: #718096; font-size: 0.85rem; }
-        .bank-val { font-weight: bold; color: var(--dark); word-break: break-all; }
-        .copy-btn { background: var(--primary); color: white; border: none; padding: 6px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: bold; cursor: pointer; margin-left: 8px; }
-        .login-box, .admin-panel { display: none; background: #f8fafc; padding: 20px; border-radius: 12px; margin-top: 20px; border: 2px solid #cbd5e0; text-align: left; }
-        .login-box h4, .admin-panel h4 { margin-bottom: 12px; color: var(--dark); }
-        .admin-panel input, .admin-panel textarea, .login-box input { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #cbd5e0; border-radius: 6px; font-size: 1rem; }
-        .admin-save-btn { background-color: var(--dark); color: white; border: none; padding: 12px; margin-top: 15px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
-        footer { text-align: center; padding: 30px 15px; color: #4a5568; font-size: 0.9ontal; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+
+        /* Suptilne šapice po cijeloj pozadini stranice */
+        body {
+            background-color: #f4f7f5;
+            background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://w3.org fill='%232ecc71' fill-opacity='0.08'%3E%3Cpath d='M25 32c-2.5 0-4.5-2.5-4.5-5.5S22.5 21 25 21s4.5 2.5 4.5 5.5S27.5 32 25 32zm12-3c-2.2 0-4-2.2-4-5s1.8-5 4-5 4 2.2 4 5-1.8 5-4 5zm-22 4c-2.2 0-4-2-4-4.5S12.8 24 15 24s4 2 4 4.5S17.2 33 15 33zm30 3c-2.2 0-4-2-4-4.5S42.8 27 45 27s4 2 4 4.5S47.2 36 45 36zm-16 14c-6.5 0-12-4-12-9 0-3.5 4.5-8 12-8s12 4.5 12 8c0 5-5.5 9-12 9z'/%3E%3C/g%3E%3C/svg%3E");
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)), url('https://unsplash.com') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            padding: 80px 20px 100px 20px;
+        }
+
+        header h1 {
+            font-size: 2.3rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.15rem;
+            max-width: 650px;
+            margin: 0 auto;
+            opacity: 0.95;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: -50px auto 40px auto;
+            padding: 0 15px;
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 25px;
+        }
+
+        @media (max-width: 820px) {
+            .container {
+                grid-template-columns: 1fr;
+                margin-top: -30px;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .main-content, .sidebar {
+            background: rgba(255, 255, 255, 0.97);
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .main-content h2 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 4px;
+            margin-top: 25px;
+            font-size: 1.4rem;
+        }
+
+        .main-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .main-content p {
+            margin-bottom: 16px;
+            font-size: 1.05rem;
+        }
+
+        .highlight-box {
+            background-color: #f0fff4;
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+            margin: 20px 0;
+            font-style: italic;
+            color: #22543d;
+        }
+
+        .tiers-list {
+            list-style: none;
+            margin-top: 10px;
+        }
+
+        .tiers-list li {
+            padding: 12px 15px;
+            background: #f8fafc;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .tiers-list li strong {
+            color: var(--aircash);
+            font-size: 1.1rem;
+        }
+
+        .sidebar h3 {
+            color: var(--dark);
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 1.4rem;
+        }
+
+        .start-badge {
+            background: #ebf8ff;
+            color: #2b6cb0;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            font-weight: bold;
+            margin-bottom: 18px;
+            border: 1px solid #bee3f8;
+        }
+
+        .section-box {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .donate-submit {
+            width: 100%;
+            background-color: var(--aircash);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.3s;
+            margin-bottom: 15px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+        }
+
+        .donate-submit:hover {
+            background-color: var(--aircash-hover);
+            transform: translateY(-2px);
+        }
+
+        .qr-wrapper {
+            text-align: center;
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            border: 2px solid #e74c3c;
+        }
+
+        .qr-wrapper p {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #c53030;
+            margin-bottom: 8px;
+        }
+
+        .qr-code {
+            max-width: 190px;
+            width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .bank-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 9px 0;
+            border-bottom: 1px solid #e2e8f0;
+            font-size: 0.92rem;
+        }
+
+        .bank-row:last-child {
+            border-bottom: none;
+        }
+
+        .bank-label {
+            color: #718096;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .bank-val {
+            font-weight: 700;
+            color: var(--dark);
+            word-break: break-all;
+            font-size: 0.98rem;
+        }
+
+        .obavezno-tag {
+            color: #e53e3e;
+            font-size: 0.75rem;
+            font-weight: 800;
+        }
+
+        .copy-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 7px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+
+        .copy-btn:active {
+            background: var(--primary-hover);
+        }
+
+        .hub3-box {
+            text-align: center;
+            margin-top: 14px;
+            padding-top: 14px;
+            border-top: 1px dashed #cbd5e0;
+        }
+
+        .hub3-box p {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 8px;
+        }
+
+        .hub3-img {
+            max-width: 220px;
+            width: 100%;
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        /* Potpuno skriveni Admin sustav */
+        .login-box, .admin-panel {
+            display: none;
+            background: #edf2f7;
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 20px;
+            border: 2px solid #cbd5e0;
+            text-align: left;
+        }
+
+        .login-box h4, .admin-panel h4 {
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .admin-panel label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #4a5568;
+        }
+
+        .admin-panel input, .admin-panel textarea, .login-box input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 4px;
+            border: 1px solid #cbd5e0;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+
+        .admin-save-btn {
+            background-color: var(--dark);
+            color: white;
+            border: none;
+            padding: 12px;
+            margin-top: 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 15px;
+            color: #4a5568;
+            font-size: 0.9rem;
+            user-select: none;
+        }
     </style>
 </head>
 <body>
+
     <header>
         <h1 id="view-title">ŠUMSKA BANDA TRAŽI POMOĆ ZA SVOJU MAMU</h1>
         <p id="view-subtitle">Ona je cijeli život nesebično spašavala napuštene šapice. Sada je ona u teškoj situaciji i treba našu pomoć.</p>
     </header>
+
     <div class="container">
+        <!-- Lijeva strana: Priča -->
         <main class="main-content">
             <h2>Naša priča: Vrijeme je da vratimo dobrotu</h2>
-            <p id="view-text1">Mi smo Šumska banda – spašene njuškice koje danas imamo siguran kutak zahvaljujući jednoj ženi. Naša mama je godinama davala zadnji atom snage i novca za bolesne i napuštene životinje.</p>
-            <div class="highlight-box">"Uvijek je bila tu za nas kada nas je boljelo i kada smo bili gladni."</div>
-            <p id="view-text2">Nažalost, život joj je zadao težak udarac. Vaše donacije idu izravno za pomoć našoj mami da stane na noge.</p>
-            <h2>Kako možete pomoći?</h2>
-            <ul class="tiers-list">
-                <li><strong>5 €</strong> – Mala gesta velikog srca.</li>
-                <li><strong>15 €</strong> – Pokrivanje osnovnih troškova.</li>
-                <li><strong>30 €</strong> – Rješavanje hitnih prepreka.</li>
-                <li><strong>50 € ili više</strong> – Velika podrška iz krize.</li>
-            </ul>
-        </main>
-        <aside class="sidebar">
-            <h3>Podržite nas odmah</h3>
-            <div class="start-badge">Početna donacija već od 5 € ❤️</div>
-            <div class="pay-tabs">
-                <button type="button" class="tab-btn active" onclick="switchTab('aircash', this)">Aircash</button>
-                <button type="button" class="tab-btn" onclick="switchTab('bank', this)">m-Banking / IBAN</button>
-            </div>
-            <div id="tab-aircash" class="tab-content active">
-                <a id="view-link" href="https://m3.aircash.eu/acpay/klaudijab1" target="_blank" class="donate-submit">Doniraj putem Aircash-a</a>
-                <div class="qr-section">
-                    <p>Aircash QR kôd:</p>
-                    <img id="view-qr" src="https://qrserver.com" alt="QR" class="qr-code">
-                </div>
-            </div>
-            <div id="tab-bank" class="tab-content">
-                <div class="bank-box">
-                    <div class="bank-row"><div><div class="bank-label">Primatelj</div><div class="bank-val">Klaudija Birkić</div></div></div>
-                    <div class="bank-row"><div><div class="bank-label">IBAN</div><div class="bank-val" id="iban-text">HR6423600001300206618</div></div><button type="button" class="copy-btn" onclick="copyText('HR6423600001300206618', this)">Kopiraj</button></div>
-                    <div class="bank-row"><div><div class="bank-label">Poziv na broj</div><div class="bank-val" id="ref-text">682932-4089</div></div><button type="button" class="copy-btn" onclick="copyText('682932-4089', this)">Kopiraj</button></div>
-                </div>
-            </div>
-            <div id="loginBox" class="login-box">
-                <h4>Admin Prijava</h4>
-                <input type="password" id="adminPasswordInput" placeholder="Šifra">
-                <button type="button" class="admin-save-btn" onclick="checkPassword()">Otključaj</button>
-            </div>
-            <div id="adminPanel" class="admin-panel">
-                <h4>Uređivanje</h4>
-                <button type="button" class="admin-save-btn" onclick="saveAdminChanges()">Spremi</button>
-            </div>
-        </aside>
-    </div>
-    <footer><p id="secret-footer">&copy; 2026 Šumska Banda. Od srca hvala!</p></footer>
-    <script>
-        const ADMIN_PASSWORD = "banda2026";
-        let tapCount = 0, tapTimer = null;
-        document.getElementById('secret-footer').addEventListener('click', function() {
-            tapCount++; clearTimeout(tapTimer);
-            tapTimer = setTimeout(() => { tapCount = 0; }, 2000);
-            if (tapCount >= 5) {
-                tapCount = 0;
-                const box = document.getElementById('loginBox');
-                box.style.display = box.style.display === "block" ? "none" : "block";
-            }
-        });
-        function switchTab(tabName, btn) {
-            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            btn.classList.add('active');
-            document.getElementById('tab-' + tabName).classList.add('active');
-        }
-        function copyText(text, btn) {
-            navigator.clipboard.writeText(text).then(() => {
-                const orig = btn.innerText; btn.innerText = "Kopirano!";
-                setTimeout(() => btn.innerText = orig, 1500);
-            });
+            <p id="view-text1">Mi smo Šumska banda – spašene njuškice koje danas imamo siguran kutak samo zahvaljujući jednoj ženi. Naša mama je godinama davala zadnji atom snage, vremena i novca kako bi liječila, hranila i spašavala bolesne i napuštene životinje koje nitko drugi nije htio.</p>
+            
+
+            
