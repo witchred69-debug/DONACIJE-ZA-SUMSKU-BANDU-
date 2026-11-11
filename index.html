@@ -187,7 +187,6 @@
             background: #fff;
         }
 
-        /* ADMIN PANEL */
         .admin-trigger {
             background: #edf2f7;
             border: 1px solid #cbd5e0;
@@ -300,19 +299,21 @@
                 <button type="button" class="admin-trigger" onclick="toggleLogin()">🔒 Admin ulaz</button>
             </div>
 
-            <!-- Forma za prijavu -->
             <div id="loginBox" class="login-box">
                 <h4>Admin Prijava</h4>
                 <input type="password" id="adminPasswordInput" placeholder="Upišite šifru (banda2026)">
                 <button type="button" class="admin-save-btn" onclick="checkPassword()">Otključaj uređivanje</button>
             </div>
 
-            <!-- Panel za uređivanje -->
             <div id="adminPanel" class="admin-panel">
                 <h4>Uređivanje stranice</h4>
                 
                 <label>Aircash Link:</label>
                 <input type="text" id="input-link">
 
-      
-                <label>Glavni Naslov:/label>
+                <label>Glavni Naslov:</label>
+                <input type="text" id="input-title">
+
+                <label>Podnaslov:</label>
+
+                
